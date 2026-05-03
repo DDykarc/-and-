@@ -62,24 +62,34 @@ Page({
   },
 
   initCanvas() {
-    const query = wx.createSelectorQuery()
-    query.select('#trendChart')
-      .fields({ node: true, size: true })
-      .exec((res) => {
-        if (!res[0]) return
-        const canvas = res[0].node
-        const ctx = canvas.getContext('2d')
-        const dpr = wx.getWindowInfo().pixelRatio
-        canvas.width = res[0].width * dpr
-        canvas.height = res[0].height * dpr
-        ctx.scale(dpr, dpr)
-        this._canvas = canvas
-        this._ctx = ctx
-        this._width = res[0].width
-        this._height = res[0].height
-        this._dpr = dpr
-        this.drawChart()
-      })
+    // 使用 setTimeout 避免阻塞页面渲染，减少超时风险
+    setTimeout(() => {
+      const query = wx.createSelectorQuery()
+      query.select('#trendChart')
+        .fields({ node: true, size: true })
+        .exec((res) => {
+          if (!res || !res[0]) {
+            console.warn('Canvas 初始化失败：未找到节点')
+            return
+          }
+          try {
+            const canvas = res[0].node
+            const ctx = canvas.getContext('2d')
+            const dpr = wx.getWindowInfo().pixelRatio
+            canvas.width = res[0].width * dpr
+            canvas.height = res[0].height * dpr
+            ctx.scale(dpr, dpr)
+            this._canvas = canvas
+            this._ctx = ctx
+            this._width = res[0].width
+            this._height = res[0].height
+            this._dpr = dpr
+            this.drawChart()
+          } catch (err) {
+            console.error('Canvas 初始化失败：', err)
+          }
+        })
+    }, 50)
   },
 
   onSelectPeriod(e) {

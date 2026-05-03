@@ -82,8 +82,14 @@ function getRecords(type, days) {
     since.setDate(since.getDate() - days)
     query = query.where({ recordTime: _.gte(since.getTime()) })
   }
-  return query.orderBy('recordTime', 'desc').get()
+  // 添加 10 秒超时保护
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error('查询超时')), 10000)
+  })
+  const queryPromise = query.orderBy('recordTime', 'desc').get()
     .then(res => res.data || [])
+
+  return Promise.race([queryPromise, timeoutPromise])
     .catch(err => {
       console.error('查询健康记录失败', err)
       return []
