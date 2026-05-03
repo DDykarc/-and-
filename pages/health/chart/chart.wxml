@@ -27,7 +27,13 @@
       <text class="chart-unit">单位：{{unit}}</text>
     </view>
     <view class="chart-wrap">
-      <canvas canvas-id="trendChart" style="height: 400rpx;"></canvas>
+      <canvas type="2d" id="trendChart" style="height: 400rpx;" 
+              bindtouchstart="onTouchStart" 
+              bindtouchmove="onTouchMove" 
+              bindtouchend="onTouchEnd"></canvas>
+      <view class="chart-tooltip" wx:if="{{tooltipShow}}" style="left:{{tooltipX}}px;top:{{tooltipY}}px;">
+        <text>{{tooltipText}}</text>
+      </view>
     </view>
     <view class="chart-empty" wx:if="{{records.length < 2}}">
       <text class="empty-text">数据不足，无法生成图表</text>
