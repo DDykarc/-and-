@@ -1,0 +1,108 @@
+<!-- 首页 - 商品列表 -->
+<view class="page">
+
+  <!-- 顶部统计 -->
+  <view class="header-card">
+    <view class="header-title">回本清单</view>
+    <view class="header-subtitle">记录每件物品的每日均摊成本</view>
+    <view class="stats-row">
+      <view class="stat-item">
+        <text class="stat-num">{{items.length}}</text>
+        <text class="stat-label">件物品</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{totalSpent}}</text>
+        <text class="stat-label">总花费(¥)</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{dailyTotal}}</text>
+        <text class="stat-label">今日总折旧(¥)</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{items.length === 0}}">
+    <view class="empty-icon">
+      <text class="empty-icon-text">📦</text>
+    </view>
+    <text class="empty-title">还没有物品</text>
+    <text class="empty-desc">点击下方 + 按钮，添加你的第一件物品</text>
+  </view>
+
+  <!-- 分类筛选栏 -->
+  <scroll-view class="category-bar" scroll-x enhanced show-scrollbar="{{false}}" wx:if="{{items.length > 0}}">
+    <view class="category-list">
+      <view class="category-item {{selectedCategory === '全部' ? 'active' : ''}}" bindtap="onFilterCategory" data-category="全部">
+        <text class="category-icon">📋</text>
+        <text class="category-name">全部</text>
+        <text class="category-count">{{filteredItems.length}}</text>
+      </view>
+      <view class="category-item {{selectedCategory === item.name ? 'active' : ''}}" wx:for="{{categories}}" wx:key="name" data-category="{{item.name}}" bindtap="onFilterCategory">
+        <text class="category-icon">{{item.icon}}</text>
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 全部趋势入口 -->
+  <view class="trend-card" wx:if="{{items.length > 1}}" bindtap="onViewAllChart">
+    <view class="trend-left">
+      <text class="trend-icon">📊</text>
+      <view class="trend-info">
+        <text class="trend-title">全部物品对比</text>
+        <text class="trend-desc">看看哪件东西每天最花钱</text>
+      </view>
+    </view>
+    <text class="trend-arrow">›</text>
+  </view>
+
+  <!-- 商品列表 -->
+  <scroll-view class="list-scroll" scroll-y wx:if="{{filteredItems.length > 0}}" enhanced show-scrollbar="{{false}}">
+    <view class="list">
+      <view class="list-item card" wx:for="{{filteredItems}}" wx:key="_id">
+        <!-- 左侧信息 -->
+        <view class="item-left" bindtap="onEditItem" data-id="{{item._id}}">
+          <view class="item-name">{{item.name}}</view>
+          <view class="item-meta">
+            <text class="item-price">¥{{item.price}}</text>
+            <text wx:if="{{item.category}}" class="item-category"> · {{item.category}}</text>
+            <text class="item-note" wx:if="{{item.note}}"> · {{item.note}}</text>
+          </view>
+        </view>
+
+        <!-- 右侧数据 + 图表按钮 + 删除按钮 -->
+        <view class="item-right">
+          <view class="item-days">
+            <text class="days-num">{{item.daysUsed}}</text>
+            <text class="days-label">天</text>
+          </view>
+          <view class="item-cost-row">
+            <view class="item-daily-cost {{item.costLevel}}">
+              <text class="cost-symbol">¥</text>
+              <text class="cost-num">{{item.dailyCost}}</text>
+              <text class="cost-unit">/天</text>
+            </view>
+            <view class="chart-btn" bindtap="onViewChart" data-id="{{item._id}}">
+              <text class="chart-btn-icon">📈</text>
+            </view>
+            <view class="delete-btn" bindtap="onDeleteItem" data-id="{{item._id}}">
+              <text class="delete-btn-icon">🗑️</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 筛选后无数据 -->
+  <view class="empty-state" wx:if="{{items.length > 0 && filteredItems.length === 0}}">
+    <text class="empty-desc">该分类下还没有物品</text>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="fab" bindtap="onAddItem">
+    <text class="fab-icon">+</text>
+  </view>
+
+</view>

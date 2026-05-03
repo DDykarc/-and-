@@ -1,0 +1,274 @@
+/* 折线图页面样式 */
+.page {
+  padding: 20rpx 0 40rpx;
+  min-height: 100vh;
+  background: #F5F6FA;
+}
+
+/* 物品信息头部 */
+.item-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.item-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.item-tags {
+  display: flex;
+  gap: 12rpx;
+  margin-top: 8rpx;
+}
+
+.category-tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  background: #E8F5E9;
+  color: #009624;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.price-tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  background: #E8F5E9;
+  color: #2E7D32;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.item-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40rpx;
+  padding: 16rpx 0;
+  background: #F9FAFB;
+  border-radius: 12rpx;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.summary-num {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.summary-cost {
+  color: #00C853;
+}
+
+.summary-label {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+.summary-divider {
+  width: 2rpx;
+  height: 48rpx;
+  background: #E0E0E0;
+}
+
+/* 图表说明 */
+.chart-intro {
+  text-align: center;
+  padding: 24rpx 20rpx 0;
+}
+
+.intro-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 图表 */
+.chart-wrapper {
+  padding: 20rpx;
+  margin-top: 16rpx;
+}
+
+.chart-canvas {
+  width: 100%;
+  height: 500rpx;
+}
+
+/* 数据表 */
+.data-table {
+  margin-top: 16rpx;
+  padding: 24rpx;
+}
+
+.table-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.table-header {
+  display: flex;
+  padding: 12rpx 0;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+
+.th {
+  font-size: 24rpx;
+  color: #999;
+  font-weight: 500;
+}
+
+.th-day { flex: 1; text-align: center; }
+.th-cost { flex: 1; text-align: center; }
+.th-saving { flex: 1; text-align: center; }
+
+.table-row {
+  display: flex;
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+
+.td {
+  flex: 1;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.td-day {
+  color: #666;
+  font-weight: 500;
+}
+
+.td-cost {
+  color: #00C853;
+  font-weight: 600;
+}
+
+.td-saving {
+  color: #2E7D32;
+  font-weight: 600;
+}
+
+/* 底部说明 */
+.footer-note {
+  text-align: center;
+  padding: 32rpx 20rpx;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #BBB;
+}
+
+/* ====== 全部物品模式 ====== */
+.all-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.all-header-top {
+  text-align: center;
+}
+
+.all-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.all-subtitle {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 6rpx;
+  display: block;
+}
+
+.all-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24rpx;
+  padding: 16rpx 0;
+  background: #F9FAFB;
+  border-radius: 12rpx;
+}
+
+.all-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.all-stat-num {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.all-stat-cost { color: #00C853; }
+.all-stat-high { color: #C62828; }
+
+.all-stat-label {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+.all-stat-divider {
+  width: 2rpx;
+  height: 40rpx;
+  background: #E0E0E0;
+}
+
+/* 全部模式表头 */
+.th-rank { width: 60rpx; text-align: center; flex: none; }
+.th-name { flex: 1; text-align: left; padding-left: 12rpx; }
+.th-all-days { width: 100rpx; text-align: center; flex: none; }
+.th-all-cost { width: 120rpx; text-align: center; flex: none; }
+
+.td-rank {
+  width: 60rpx;
+  text-align: center;
+  flex: none;
+  color: #CCC;
+  font-weight: 500;
+  font-size: 24rpx;
+}
+
+.td-name {
+  flex: 1;
+  text-align: left;
+  padding-left: 12rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.td-all-days {
+  width: 100rpx;
+  text-align: center;
+  flex: none;
+  color: #999;
+}
+
+.td-all-cost {
+  width: 120rpx;
+  text-align: center;
+  flex: none;
+  font-weight: 600;
+}
+
+.t-cost-green { color: #2E7D32; }
+.t-cost-orange { color: #E65100; }
+.t-cost-red { color: #C62828; }

@@ -1,0 +1,139 @@
+.page {
+  padding: 20rpx 0 60rpx;
+  min-height: 100vh;
+  background: #F5F6FA;
+}
+
+.card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: 0 24rpx 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
+}
+
+.section {
+  margin-bottom: 36rpx;
+}
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section-label {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+.unit {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.input-large {
+  font-size: 48rpx !important;
+  font-weight: 700;
+  text-align: center;
+  padding: 30rpx 20rpx !important;
+}
+
+/* 选项组 */
+.option-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+.option-item {
+  padding: 14rpx 28rpx;
+  border-radius: 32rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #F5F6FA;
+  border: 2rpx solid transparent;
+  transition: all 0.2s;
+}
+.option-item.active {
+  background: #E8F5E9;
+  color: #00C853;
+  border-color: #00C853;
+}
+
+/* 时间选择 */
+.picker-value {
+  background: #F5F6FA;
+  border-radius: 12rpx;
+  padding: 24rpx 28rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+/* BMI显示 */
+.bmi-display {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-top: 16rpx;
+  padding: 16rpx 20rpx;
+  background: #F5F6FA;
+  border-radius: 12rpx;
+}
+.bmi-value {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+.bmi-category {
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+.bmi-category.normal {
+  background: #E8F5E9;
+  color: #388E3C;
+}
+.bmi-category.low {
+  background: #FFF3E0;
+  color: #F57C00;
+}
+.bmi-category.high {
+  background: #FFEBEE;
+  color: #D32F2F;
+}
+.bmi-hint {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 按钮 */
+.btn-wrap {
+  padding: 0 24rpx;
+}
+.btn-primary {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  background: linear-gradient(135deg, #00C853, #69F0AE);
+  color: #FFFFFF;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  border: none;
+  margin-bottom: 24rpx;
+}
+.btn-primary.disabled {
+  opacity: 0.5;
+}
+.btn-danger {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  background: #FFEBEE;
+  color: #C62828;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  border: none;
+}

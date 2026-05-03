@@ -1,0 +1,54 @@
+<view class="page">
+  <view class="card">
+    <!-- 性别选择（影响尿酸参考范围） -->
+    <view class="section">
+      <text class="section-label">性别</text>
+      <view class="option-group">
+        <view class="option-item {{gender === 'male' ? 'active' : ''}}" data-value="male" bindtap="onSelectGender">男</view>
+        <view class="option-item {{gender === 'female' ? 'active' : ''}}" data-value="female" bindtap="onSelectGender">女</view>
+      </view>
+      <text class="section-hint">性别用于尿酸参考范围判断</text>
+    </view>
+
+    <view class="section">
+      <text class="section-label">身高 (cm)</text>
+      <input class="input-field" type="digit" placeholder="请输入身高" value="{{height}}" bindinput="onInputHeight" />
+    </view>
+
+    <view class="section">
+      <text class="section-label">目标体重 (kg)</text>
+      <input class="input-field" type="digit" placeholder="请输入目标体重" value="{{targetWeight}}" bindinput="onInputTargetWeight" />
+      <text class="section-hint">设置目标体重后，首页会显示进度</text>
+    </view>
+
+    <!-- BMI实时显示 -->
+    <view class="section" wx:if="{{height && targetWeight}}">
+      <view class="bmi-result">
+        <text class="bmi-title">目标体重 BMI</text>
+        <text class="bmi-value">{{targetWeight}} kg / BMI {{bmi}}</text>
+        <text class="bmi-category {{bmiCategoryClass}}">{{bmiCategory}}</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-label">体重对比天数</text>
+      <view class="option-group">
+        <view class="option-item {{compareDays === item.value ? 'active' : ''}}" wx:for="{{compareOptions}}" wx:key="value" data-value="{{item.value}}" bindtap="onSelectCompareDays">{{item.label}}</view>
+      </view>
+      <text class="section-hint">首页体重卡片会显示与{{compareDays}}天前的对比</text>
+    </view>
+  </view>
+
+  <view class="btn-wrap">
+    <button class="btn-primary" bindtap="onSave">保存设置</button>
+  </view>
+
+  <!-- 说明 -->
+  <view class="tips">
+    <text class="tips-title">关于BMI</text>
+    <text class="tips-item">偏瘦：BMI &lt; 18.5</text>
+    <text class="tips-item">正常：18.5 ≤ BMI &lt; 24</text>
+    <text class="tips-item">偏胖：24 ≤ BMI &lt; 28</text>
+    <text class="tips-item">肥胖：BMI ≥ 28</text>
+  </view>
+</view>

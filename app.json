@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/add/add",
+    "pages/chart/chart",
+    "pages/health/index/index",
+    "pages/health/record/record",
+    "pages/health/history/history",
+    "pages/health/chart/chart",
+    "pages/health/settings/settings"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "回本清单",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F6FA",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#00C853",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "回本清单",
+        "iconPath": "images/tabbar/cost.png",
+        "selectedIconPath": "images/tabbar/cost_active.png"
+      },
+      {
+        "pagePath": "pages/health/index/index",
+        "text": "健康记录",
+        "iconPath": "images/tabbar/health.png",
+        "selectedIconPath": "images/tabbar/health_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

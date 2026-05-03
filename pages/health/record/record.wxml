@@ -1,0 +1,69 @@
+<view class="page">
+  <view class="card">
+    <!-- 数值输入 -->
+    <view class="section">
+      <text class="section-label">{{typeName}}数值 <text class="unit">({{unit}})</text></text>
+      <input class="input-field input-large" type="digit" placeholder="请输入{{typeName}}数值" value="{{value}}" bindinput="onInputValue" />
+      <!-- 体重BMI显示 -->
+      <view wx:if="{{type === 'weight' && bmi}}" class="bmi-display">
+        <text class="bmi-value">{{value}} {{unit}} / BMI {{bmi}}</text>
+        <text class="bmi-category {{bmiCategory === '正常' ? 'normal' : (bmiCategory === '偏瘦' ? 'low' : 'high')}}">{{bmiCategory}}</text>
+      </view>
+      <view wx:if="{{type === 'weight' && !height}}" class="bmi-hint">
+        <text>请在设置页填写身高以计算BMI</text>
+      </view>
+    </view>
+
+    <!-- 血糖测量时机 -->
+    <view class="section" wx:if="{{type === 'blood_sugar'}}">
+      <text class="section-label">测量时机</text>
+      <view class="option-group">
+        <view
+          wx:for="{{timingOptions}}"
+          wx:key="*this"
+          class="option-item {{timing === item ? 'active' : ''}}"
+          data-value="{{item}}"
+          bindtap="onSelectTiming"
+        >{{item}}</view>
+      </view>
+    </view>
+
+    <!-- 尿酸服药状态 -->
+    <view class="section" wx:if="{{type === 'uric_acid'}}">
+      <text class="section-label">服药状态</text>
+      <view class="option-group">
+        <view class="option-item {{medicated === true ? 'active' : ''}}" data-value="{{true}}" bindtap="onSelectMedicated">已服药</view>
+        <view class="option-item {{medicated === false ? 'active' : ''}}" data-value="{{false}}" bindtap="onSelectMedicated">未服药</view>
+      </view>
+      <input wx:if="{{medicated === true}}" class="input-field" placeholder="药名（可选）" value="{{medicine}}" bindinput="onInputMedicine" />
+    </view>
+
+    <!-- 记录日期 -->
+    <view class="section">
+      <text class="section-label">记录日期</text>
+      <picker mode="date" value="{{dateValue}}" end="{{today}}" bindchange="onDateChange">
+        <view class="picker-value">{{dateValue || '请选择日期'}}</view>
+      </picker>
+    </view>
+
+    <!-- 记录时间 -->
+    <view class="section">
+      <text class="section-label">记录时刻</text>
+      <picker mode="time" value="{{timeValue}}" bindchange="onTimeChange">
+        <view class="picker-value">{{timeValue || '请选择时间'}}</view>
+      </picker>
+    </view>
+
+    <!-- 备注 -->
+    <view class="section">
+      <text class="section-label">备注（可选）</text>
+      <input class="input-field" placeholder="添加备注" value="{{note}}" bindinput="onInputNote" />
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="btn-wrap">
+    <button class="btn-primary {{canSave ? '' : 'disabled'}}" bindtap="onSave">{{isEdit ? '保存修改' : '添加记录'}}</button>
+    <button wx:if="{{isEdit}}" class="btn-danger" bindtap="onDelete">删除记录</button>
+  </view>
+</view>

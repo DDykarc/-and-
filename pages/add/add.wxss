@@ -1,0 +1,175 @@
+/* 添加页面样式 */
+.page {
+  padding: 20rpx 0;
+  min-height: 100vh;
+}
+
+.form-card {
+  padding: 32rpx;
+}
+
+.form-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 36rpx;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 28rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+/* 价格输入 */
+.price-input-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.price-prefix {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #00C853;
+  margin-right: 12rpx;
+}
+
+.price-input {
+  flex: 1;
+}
+
+/* 日期选择器 */
+.date-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.date-text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.date-placeholder {
+  color: #CCC;
+  font-size: 30rpx;
+}
+
+.date-arrow {
+  font-size: 20rpx;
+  color: #CCC;
+  transform: rotate(90deg);
+}
+
+/* 分类选择器 */
+.category-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.category-option {
+  padding: 12rpx 24rpx;
+  background: #F5F6FA;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+  border: 2rpx solid transparent;
+  transition: all 0.2s;
+}
+
+.category-option:active {
+  transform: scale(0.95);
+}
+
+.category-option.active {
+  background: #E8F5E9;
+  border-color: #00C853;
+  color: #009624;
+  font-weight: 600;
+}
+
+.cat-icon {
+  font-size: 28rpx;
+  margin-right: 6rpx;
+}
+
+.cat-text {
+  line-height: 1;
+}
+
+/* 预览区域 */
+.preview-section {
+  margin-top: 20rpx;
+}
+
+.preview-divider {
+  height: 2rpx;
+  background: #F0F0F0;
+  margin: 20rpx 0;
+}
+
+.preview-title {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #999;
+  margin-bottom: 16rpx;
+}
+
+.preview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 0;
+}
+
+.preview-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.preview-value {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.preview-cost {
+  color: #00C853;
+  font-size: 34rpx;
+}
+
+/* 保存按钮 */
+.save-btn {
+  margin-top: 40rpx;
+}
+
+.save-btn[disabled] {
+  opacity: 0.4;
+  box-shadow: none;
+}
+
+/* 删除按钮 */
+.btn-delete {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: transparent;
+  color: #FF3B30;
+  font-size: 28rpx;
+  border: none;
+  margin-top: 20rpx;
+  border-radius: 12rpx;
+}
+
+.btn-delete-hover {
+  background: #FFF0F0;
+}
