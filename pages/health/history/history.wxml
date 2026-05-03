@@ -3,15 +3,28 @@
   <view class="record-list">
     <view class="record-item" wx:for="{{records}}" wx:key="_id">
       <view class="record-main" data-id="{{item._id}}" bindtap="onTapRecord">
-        <view class="record-left">
-          <text class="record-value">{{item.value}}</text>
-          <text class="record-unit">{{unit}}</text>
-          <text class="record-status {{item.status === 'normal' ? 'status-normal' : (item.status === 'high' ? 'status-high' : 'status-low')}}">
-            {{item.status === 'normal' ? '正常' : (item.status === 'high' ? '偏高' : '偏低')}}
-          </text>
+        <view class="record-top">
+          <view class="record-left">
+            <text class="record-value">{{item.value}}</text>
+            <text class="record-unit">{{unit}}</text>
+            <text class="record-status {{item.status === 'normal' ? 'status-normal' : (item.status === 'high' ? 'status-high' : 'status-low')}}">
+              {{item.status === 'normal' ? '正常' : (item.status === 'high' ? '偏高' : '偏低')}}
+            </text>
+          </view>
         </view>
-        <text class="record-time">{{item.timeStr}}</text>
+
+        <view class="record-info">
+          <text class="record-time">{{item.timeStr}}</text>
+          <text class="record-timing" wx:if="{{item.timing}}">{{item.timing}}</text>
+          <text class="record-medicated" wx:if="{{item.medicated === true}}">已服药</text>
+          <text class="record-medicated-none" wx:if="{{item.medicated === false}}">未服药</text>
+        </view>
+
+        <view class="record-note" wx:if="{{item.note}}">
+          <text class="note-text">{{item.note}}</text>
+        </view>
       </view>
+
       <view class="record-delete" data-id="{{item._id}}" bindtap="onDelete">删除</view>
     </view>
   </view>

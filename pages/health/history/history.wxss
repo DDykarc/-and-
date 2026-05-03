@@ -14,13 +14,22 @@
   padding: 24rpx;
   margin-bottom: 16rpx;
   box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .record-main {
+  flex: 1;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12rpx;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.record-top {
+  display: flex;
+  align-items: baseline;
+  gap: 8rpx;
 }
 
 .record-left {
@@ -62,16 +71,62 @@
   color: #F57C00;
 }
 
+.record-info {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
 .record-time {
   font-size: 24rpx;
   color: #999;
 }
 
+.record-timing {
+  font-size: 22rpx;
+  color: #666;
+  background: #F5F6FA;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.record-medicated {
+  font-size: 22rpx;
+  color: #388E3C;
+  background: #E8F5E9;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.record-medicated-none {
+  font-size: 22rpx;
+  color: #999;
+  background: #F5F6FA;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.record-note {
+  background: #F9F9F9;
+  padding: 12rpx 16rpx;
+  border-radius: 8rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.note-text {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
 .record-delete {
-  text-align: right;
   font-size: 24rpx;
   color: #F44336;
-  padding: 8rpx 0;
+  padding: 8rpx 0 8rpx 24rpx;
+  white-space: nowrap;
 }
 
 .empty {

@@ -6,7 +6,8 @@ Page({
     typeName: '',
     unit: '',
     records: [],
-    loading: true
+    loading: true,
+    settings: {}
   },
 
   onLoad(options) {
@@ -17,7 +18,8 @@ Page({
       weight: { name: '体重', unit: 'kg' }
     }
     const info = typeMap[type] || { name: '', unit: '' }
-    this.setData({ type, typeName: info.name, unit: info.unit })
+    const settings = healthDb.getSettings()
+    this.setData({ type, typeName: info.name, unit: info.unit, settings })
     wx.setNavigationBarTitle({ title: info.name + '记录' })
   },
 
@@ -26,12 +28,38 @@ Page({
   },
 
   loadData() {
-    const { type } = this.data
+    const { type, settings } = this.data
     this.setData({ loading: true })
     healthDb.getRecords(type).then(records => {
       // 按时间倒序
       records.sort((a, b) => b.recordTime - a.recordTime)
-      this.setData({ records, loading: false })
+
+      // 为每个记录计算状态和格式化时间
+      const enrichedRecords = records.map(r => {
+        // 计算状态
+        let status = 'unknown'
+        if (type === 'blood_sugar') {
+          status = healthDb.getStatus(type, r.value, { timing: r.timing })
+        } else if (type === 'uric_acid') {
+          status = healthDb.getStatus(type, r.value, { gender: settings.gender || 'male' })
+        }
+
+        // 格式化时间
+        const d = new Date(r.recordTime)
+        const month = d.getMonth() + 1
+        const day = d.getDate()
+        const hour = String(d.getHours()).padStart(2, '0')
+        const minute = String(d.getMinutes()).padStart(2, '0')
+        const timeStr = month + '/' + day + ' ' + hour + ':' + minute
+
+        return {
+          ...r,
+          status,
+          timeStr
+        }
+      })
+
+      this.setData({ records: enrichedRecords, loading: false })
     })
   },
 
