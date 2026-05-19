@@ -56,9 +56,14 @@ Page({
     const promises = localItems.map(item => db.addItem(item))
     Promise.all(promises).then(() => {
       wx.hideLoading()
-      // 迁移后清除本地数据，重新从云端加载
+      // 迁移成功后清除本地数据，重新从云端加载
       wx.setStorageSync('items', [])
       this.loadData()
+    }).catch(err => {
+      wx.hideLoading()
+      console.error('数据迁移失败', err)
+      wx.showToast({ title: '同步失败，请重试', icon: 'none' })
+      // 不清除本地数据，保留恢复机会
     })
   },
 

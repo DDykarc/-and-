@@ -30,14 +30,20 @@
           <text class="latest-value" style="color:{{item.color}}">{{moduleData[item.key].latest}}</text>
           <text class="latest-unit">{{item.unit}}</text>
         </block>
-        <view class="tag {{moduleData[item.key].status === 'normal' ? 'tag-green' : (moduleData[item.key].status === 'high' ? 'tag-red' : 'tag-orange')}}">
-          {{moduleData[item.key].status === 'normal' ? '正常' : (moduleData[item.key].status === 'high' ? '偏高' : (moduleData[item.key].status === 'low' ? '偏低' : ''))}}
-        </view>
+        <!-- 体重显示BMI分类标签，其他类型显示状态标签 -->
+        <block wx:if="{{item.key === 'weight' && moduleData[item.key].bmiText}}">
+          <view class="tag weight-bmi-tag">{{moduleData[item.key].bmiText}}</view>
+        </block>
+        <block wx:else>
+          <view class="tag {{moduleData[item.key].status === 'normal' ? 'tag-green' : (moduleData[item.key].status === 'high' ? 'tag-red' : 'tag-orange')}}">
+            {{moduleData[item.key].status === 'normal' ? '正常' : (moduleData[item.key].status === 'high' ? '偏高' : (moduleData[item.key].status === 'low' ? '偏低' : ''))}}
+          </view>
+        </block>
       </view>
 
-      <!-- 体重额外信息：BMI分类、目标差、N天对比 -->
+      <!-- 体重额外信息：BMI提示 / 目标差、N天对比 -->
       <view wx:if="{{item.key === 'weight'}}" class="weight-info">
-        <text wx:if="{{moduleData[item.key].bmiCategory}}" class="bmi-tag">{{moduleData[item.key].bmiCategory}}</text>
+        <text wx:if="{{!moduleData[item.key].bmi && moduleData[item.key].latest !== null}}" class="bmi-tag" catchtap="onTapSettings">请设置身高以计算BMI</text>
         <text wx:if="{{moduleData[item.key].targetDiff !== undefined && moduleData[item.key].targetDiff !== null}}" class="target-tag {{moduleData[item.key].targetDiff > 0 ? 'over' : 'under'}}">
           {{moduleData[item.key].targetDiff > 0 ? '超目标' : '距目标'}} {{moduleData[item.key].targetDiff}} kg
         </text>

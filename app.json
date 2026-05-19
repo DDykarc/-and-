@@ -7,7 +7,8 @@
     "pages/health/record/record",
     "pages/health/history/history",
     "pages/health/chart/chart",
-    "pages/health/settings/settings"
+    "pages/health/settings/settings",
+    "pages/about/about"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",

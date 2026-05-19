@@ -145,7 +145,6 @@ Page({
       })
     } else {
       // 新增到云端
-      itemData.id = Date.now().toString()
       itemData.createdAt = new Date().toISOString()
 
       db.addItem(itemData).then(newId => {

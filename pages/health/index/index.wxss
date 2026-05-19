@@ -118,6 +118,13 @@
   color: #D32F2F;
 }
 
+/* 体重卡片状态标签（BMI分类） */
+.weight-bmi-tag {
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-size: 20rpx;
+}
+
 /* 统计数据 */
 .card-stats {
   display: flex;

@@ -62,6 +62,10 @@ Page({
     setTimeout(() => wx.navigateBack(), 800)
   },
 
+  onAbout() {
+    wx.navigateTo({ url: '/pages/about/about' })
+  },
+
   // 计算BMI并更新显示
   calcBMI() {
     const h = parseFloat(this.data.height)

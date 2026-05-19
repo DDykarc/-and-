@@ -192,9 +192,12 @@ Page({
       return
     }
 
-    // 将 "YYYY-MM-DD HH:MM" 转为时间戳
+    // 将 "YYYY-MM-DD HH:MM" 转为时间戳（兼容iOS）
     const dateTimeStr = `${dateValue} ${timeValue}`
-    const timestamp = new Date(dateTimeStr.replace(/-/g, '/')).getTime()
+    const [datePart, timePart] = dateTimeStr.split(' ')
+    const [year, month, day] = datePart.split('-').map(Number)
+    const [hour, minute] = timePart.split(':').map(Number)
+    const timestamp = new Date(year, month - 1, day, hour, minute).getTime()
 
     const record = {
       type,

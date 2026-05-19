@@ -23,7 +23,7 @@ const collection = db.collection('items')
  * @returns {Promise<Array>}
  */
 function getAllItems() {
-  return collection.get()
+  return collection.limit(100).orderBy('createdAt', 'desc').get()
     .then(res => res.data || [])
     .catch(err => {
       console.error('云端读取失败', err)

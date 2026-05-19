@@ -1,0 +1,24 @@
+<view class="page">
+  <!-- 头部 -->
+  <view class="header">
+    <image class="logo" src="/images/icon.png" mode="aspectFit"></image>
+    <text class="app-name">回本清单</text>
+    <text class="version">当前版本：v{{version}}</text>
+  </view>
+
+  <!-- 更新日志 -->
+  <view class="card">
+    <text class="card-title">更新日志</text>
+    <view class="log-list">
+      <view class="log-item" wx:for="{{changelog}}" wx:key="version">
+        <view class="log-header">
+          <text class="log-version">v{{item.version}}</text>
+          <text class="log-date">{{item.date}}</text>
+        </view>
+        <view class="log-changes">
+          <text class="log-change" wx:for="{{item.changes}}" wx:for-item="change" wx:key="*this">· {{change}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

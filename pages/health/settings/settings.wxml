@@ -51,4 +51,10 @@
     <text class="tips-item">偏胖：24 ≤ BMI &lt; 28</text>
     <text class="tips-item">肥胖：BMI ≥ 28</text>
   </view>
+
+  <!-- 关于入口 -->
+  <view class="about-entry" bindtap="onAbout">
+    <text>关于</text>
+    <text class="arrow">></text>
+  </view>
 </view>

@@ -46,6 +46,7 @@ Page({
           if (settings.height) {
             result.bmi = healthDb.calcBMI(stats.latest, settings.height)
             result.bmiCategory = result.bmi ? healthDb.getBMICategory(result.bmi) : ''
+            result.bmiText = result.bmi ? ('BMI ' + result.bmi + ' ' + result.bmiCategory) : ''
           }
           // 目标体重差
           if (settings.targetWeight) {

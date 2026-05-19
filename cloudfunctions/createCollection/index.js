@@ -21,12 +21,12 @@ exports.main = async (event, context) => {
     }
   }
 
-  // 设置集合权限
+  // 设置集合权限：仅创建者可读写
   for (const name of collections) {
     try {
       await db.collection(name).setPermission({
-        read: true,
-        write: true
+        read: 'doc._openid == auth.openid',
+        write: 'doc._openid == auth.openid'
       })
     } catch (e) {
       // 忽略权限设置错误
