@@ -4,8 +4,16 @@
  * version: 从云数据库 version_info 集合读取，此处为兜底值
  */
 module.exports = {
-  version: '1.0.0',
+  version: '1.1.2.1',
   changelog: [
+    {
+      version: '1.1.2.1',
+      date: '2026-05-25',
+      changes: [
+        '图表拖动边界：限制图表不能拖出可视区域',
+        '历史记录状态标签对齐：通过不对称padding实现文字视觉居中',
+      ]
+    },
     {
       version: '1.1.0',
       date: '2026-05-19',
