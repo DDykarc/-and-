@@ -70,15 +70,17 @@
   align-items: center;
   gap: 10rpx;
   margin-bottom: 8rpx;
+  height: 80rpx;
 }
 .latest-value {
   font-size: 64rpx;
   font-weight: 800;
-  line-height: 1;
+  line-height: 80rpx;
 }
 .latest-unit {
   font-size: 24rpx;
   color: #999;
+  line-height: 80rpx;
 }
 .latest-time {
   font-size: 22rpx;

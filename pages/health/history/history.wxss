@@ -26,34 +26,38 @@
   gap: 12rpx;
 }
 
-.record-top {
-  display: flex;
-  align-items: baseline;
-  gap: 8rpx;
-}
-
 .record-left {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8rpx;
+  height: 80rpx;
+  margin-top: -4rpx;
 }
 
 .record-value {
   font-size: 48rpx;
   font-weight: 700;
   color: #333;
+  line-height: 80rpx;
 }
 
 .record-unit {
   font-size: 24rpx;
   color: #999;
+  line-height: 80rpx;
 }
 
 .record-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 22rpx;
-  padding: 4rpx 12rpx;
+  font-weight: 500;
+  height: 40rpx;
+  padding: 0 16rpx 16rpx;
   border-radius: 8rpx;
   margin-left: 12rpx;
+  line-height: 1;
 }
 
 .status-normal {

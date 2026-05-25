@@ -3,14 +3,12 @@
   <view class="record-list">
     <view class="record-item" wx:for="{{records}}" wx:key="_id">
       <view class="record-main" data-id="{{item._id}}" bindtap="onTapRecord">
-        <view class="record-top">
-          <view class="record-left">
-            <text class="record-value">{{item.value}}</text>
-            <text class="record-unit">{{unit}}</text>
-            <text class="record-status {{item.status === 'normal' ? 'status-normal' : (item.status === 'high' ? 'status-high' : 'status-low')}}">
-              {{item.status === 'normal' ? '正常' : (item.status === 'high' ? '偏高' : '偏低')}}
-            </text>
-          </view>
+        <view class="record-left">
+          <text class="record-value">{{item.value}}</text>
+          <text class="record-unit">{{unit}}</text>
+          <text class="record-status {{item.status === 'normal' ? 'status-normal' : (item.status === 'high' ? 'status-high' : 'status-low')}}">
+            {{item.status === 'normal' ? '正常' : (item.status === 'high' ? '偏高' : '偏低')}}
+          </text>
         </view>
 
         <view class="record-info">

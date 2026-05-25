@@ -294,6 +294,15 @@ Page({
       const dx = touches[0].x - this._lastX
       this._offsetX += dx
       this._lastX = touches[0].x
+      // 限制拖动边界：图表不能拖出可视区域
+      const padding = this._padding
+      const chartW = this._width - padding.left - padding.right
+      const itemWidth = chartW / Math.max(1, this.data.records.length - 1) * this._scale
+      const totalWidth = itemWidth * (this.data.records.length - 1)
+      const minX = chartW - totalWidth - padding.left
+      const maxX = padding.left
+      if (this._offsetX < minX) this._offsetX = minX
+      if (this._offsetX > maxX) this._offsetX = maxX
       this.drawChart()
     } else if (touches.length === 2) {
       const dx = touches[0].x - touches[1].x
